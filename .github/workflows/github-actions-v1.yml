@@ -35,8 +35,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        working-directory: ./front
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: ./front
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
