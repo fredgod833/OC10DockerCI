@@ -1,4 +1,4 @@
-name: BobFront CI
+name: BobBack CI
 
 on: [push]
 
