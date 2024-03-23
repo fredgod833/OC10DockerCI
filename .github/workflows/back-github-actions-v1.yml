@@ -1,0 +1,26 @@
+name: BobFront CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Maven
+    - uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+
+      - name: Build & Test
+        working-directory: ./back
+        run: mvn clean install
+
+
+
+  # - name: Run the Maven verify phase
+  #   run: mvn --batch-mode --update-snapshots verify

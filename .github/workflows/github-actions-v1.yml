@@ -1,32 +1,4 @@
-# name: Node.js CI front
-
-# on: [push]
-
-# jobs:
-#   build-front:
-#     runs-on: ubuntu-latest
-
-#     # conserver du cache
-#     # - name: Cache node modules
-#     # uses: actions/cache@v3
-#     # with:
-#     # path: ./front/node_modules
-#     steps:
-#       - uses: actions/checkout@v4
-#         working-directory: ./front
-
-#       - name: install node
-#       - run: npm ci
-
-#       - name: test front
-#       - run: npm test --  --browsers=ChromeHeadless --watch=false
-
-#       - name: build front
-#       - run: npm build
-
-# runs-on: node:lts-alpine3.19
-
-name: Node.js CI
+name: BobFront CI
 
 on: [push]
 
@@ -42,7 +14,7 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: Install dependencies and build
+      - name: Install dependencies
         working-directory: ./front
         run: npm ci
 
