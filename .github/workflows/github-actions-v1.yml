@@ -16,7 +16,7 @@ jobs:
         working-directory: ./front
 
       - name: install node
-        run: npm ci
+      - run: npm ci
 
       - name: test front
       - run: npm test --  --browsers=ChromeHeadless --watch=false
