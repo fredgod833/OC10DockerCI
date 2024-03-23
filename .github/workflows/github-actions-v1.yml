@@ -36,13 +36,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        working-directory: ./front
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20.x"
+
       - name: Install dependencies and build
-        run: |
-          cd front
-          npm ci
-          npm run build --if-present
-          npm test -- --browsers=ChromeHeadless --watch=false
+        run: npm ci
+
+      - name: Test code
+        run: npm test -- --browsers=ChromeHeadless --watch=false
+
+      - name: Build
+        run: npm run build --if-present
