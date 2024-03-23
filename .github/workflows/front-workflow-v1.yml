@@ -37,4 +37,4 @@ jobs:
         with:
           context: ./front
           push: true
-          tags: adrienpiombini/p10_bob_application:latest
+          tags: adrienpiombini/p10_bob_application:frontend
