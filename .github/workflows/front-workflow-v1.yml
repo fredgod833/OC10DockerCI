@@ -32,9 +32,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
-        working-directory: ./front
+      - name: Build image and push on Dockerhub
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: adrienpiombini/bob-front-end
+          path: ./front
+          tags: adrienpiombini/p10_bob_application:latest
