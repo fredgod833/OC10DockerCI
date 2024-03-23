@@ -3,7 +3,7 @@ name: BobBack CI
 on: [push]
 
 jobs:
-  build Back:
+  build_Back:
     runs-on: ubuntu-latest
 
     steps:

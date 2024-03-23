@@ -3,7 +3,7 @@ name: BobFront CI
 on: [push]
 
 jobs:
-  build Front:
+  build_Front:
     runs-on: ubuntu-latest
 
     steps:
