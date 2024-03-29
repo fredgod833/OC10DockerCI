@@ -20,6 +20,7 @@ jobs:
 
     - name: Run backend tests
       run: mvn test
+      working-directory: ./back
 
     - name: Set up Node.js for frontend tests
       uses: actions/setup-node@v2
