@@ -22,6 +22,16 @@ jobs:
       run: mvn test
       working-directory: ./back
 
+    - name: Generate backend coverage report
+      run: mvn jacoco:report
+      working-directory: ./back
+
+    - name: Upload backend coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: backend-coverage-report
+        path: back/target/site/jacoco/
+
     - name: Set up Node.js for frontend tests
       uses: actions/setup-node@v2
       with:
