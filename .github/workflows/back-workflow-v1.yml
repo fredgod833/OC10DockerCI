@@ -20,7 +20,7 @@ jobs:
         run: mvn clean install
 
       - name: Artefact coverage
-        uses: actions/upload-artefact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: coverage jacoco
           path: ./back/target/site/jacoco/index.html
