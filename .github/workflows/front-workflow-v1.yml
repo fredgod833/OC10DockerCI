@@ -20,7 +20,7 @@ jobs:
 
       - name: Test code
         working-directory: ./front
-        run: npm test -- --browsers=ChromeHeadless --watch=false
+        run: npm test
 
       - name: Build
         working-directory: ./front
