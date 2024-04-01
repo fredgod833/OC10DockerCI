@@ -27,7 +27,11 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require("path").join(__dirname, "./coverage/bobapp"),
       subdir: ".",
-      reporters: [{ type: "text-summary" }, { type: "html" }],
+      reporters: [
+        { type: "text-summary" },
+        { type: "html" },
+        { type: "cobertura" },
+      ],
     },
     reporters: ["progress", "kjhtml", "coverage"],
     port: 9876,
