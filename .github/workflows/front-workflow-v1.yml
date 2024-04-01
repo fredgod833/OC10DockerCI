@@ -37,7 +37,7 @@ jobs:
         if: always() # run this step even if previous step failed
         with:
           name: JEST Tests # Name of the check run which will be created
-          path: ./front/coverage/bobapp/index.html # Path to test results
+          path: ./front/coverage/bobapp/cobertura-coverage.xml # Path to test results
           reporter: jest-junit
 
       - name: Login to Docker Hub
