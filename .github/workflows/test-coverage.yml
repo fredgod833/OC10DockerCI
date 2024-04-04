@@ -1,0 +1,34 @@
+name: run tests and coverage reports
+
+on:
+  push:
+    branches: [main, dev/*]
+  pull_request:
+    branches: [main, dev/*]
+
+jobs:
+  tests-front-end:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: front
+        run: npm ci
+
+      - name: Run tests and generate code coverage
+        run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
+        working-directory: front
+
+      - name: Upload Karma report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: front/coverage/bobapp
