@@ -44,9 +44,9 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           projectBaseDir: ./front
-              args: >
-                -Dsonar.organization=adrienpiombini
-                -Dsonar.projectKey=AdrienPiombini_P10-Gerez-un-projet-collaboratif-en-integrant-une-demarche-CI-CD
+          args: >
+            -Dsonar.organization=adrienpiombini
+            -Dsonar.projectKey=AdrienPiombini_P10-Gerez-un-projet-collaboratif-en-integrant-une-demarche-CI-CD
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
