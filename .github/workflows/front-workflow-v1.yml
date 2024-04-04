@@ -41,8 +41,9 @@ jobs:
       #     reporter: ""
 
       - name: SonarCloud Scan
-        working-directory: ./front
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          path: ./front
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
