@@ -8,6 +8,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
+
   build-back-end:
     name: Build and analyze back-end
     runs-on: ubuntu-latest
