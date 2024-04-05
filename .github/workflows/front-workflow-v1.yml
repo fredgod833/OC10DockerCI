@@ -1,8 +1,9 @@
 name: BobFront CI
 
 on:
-  push: #switch to pull_request
-    branches: -main
+  [push]
+  # push: #switch to pull_request
+  #   branches: -main
 
 jobs:
   build_Front:
