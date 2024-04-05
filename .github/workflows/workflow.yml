@@ -1,0 +1,8 @@
+name: workflowTest
+
+on: workflow_dispatch:
+
+
+jobs:
+  build_Front:
+    runs-on: ubuntu-latest

@@ -8,8 +8,6 @@ on:
     branches:
       - feat/github-actions-configuration
 
-  workflow_dispatch:
-
 jobs:
   build_Front:
     runs-on: ubuntu-latest
