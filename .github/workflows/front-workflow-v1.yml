@@ -51,10 +51,10 @@ jobs:
           projectBaseDir: ./front
           args: >
             -Dsonar.organization=adrienpiombini
-            -Dsonar.projectKey=AdrienPiombini_P10-Gerez-un-projet-collaboratif-en-integrant-une-demarche-CI-CD/front
+            -Dsonar.projectKey=adrienpiombini_p10-front
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
 
   docker_actions:
     needs: [build_Front, sonar_quality]
