@@ -14,13 +14,16 @@
 	<name>bobapp</name>
 	<description>L'application de joke par excellence !</description>
 	<properties>
-		<java.version>11</java.version>
+        <java.version>11</java.version>
+        <sonar.projectKey>cecilia-giusti_bobapp</sonar.projectKey>
+        <sonar.organization>cecilia-giusti</sonar.organization>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
