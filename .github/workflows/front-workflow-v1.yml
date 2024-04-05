@@ -58,7 +58,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
 
   docker_actions:
-    needs: [build_Front, sonar_quality]
+    needs: [build_Front]
     runs-on: ubuntu-latest
 
     steps:
@@ -75,4 +75,4 @@ jobs:
         with:
           context: ./front
           push: true
-          tags: adrienpiombini/p10_bob_application:frontend
+          tags: adrienpiombini/p10_bob_application_frontend:latest

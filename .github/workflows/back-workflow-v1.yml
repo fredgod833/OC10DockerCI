@@ -43,4 +43,4 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: adrienpiombini/p10_bob_application:backend
+          tags: adrienpiombini/p10_bob_application_backend:latest
