@@ -6,7 +6,7 @@ on:
       - main
   push:
     branches:
-      - main
+      - feat/github-actions-configuration
 
 jobs:
   build_Front:
