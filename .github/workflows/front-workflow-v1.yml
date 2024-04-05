@@ -33,6 +33,7 @@ jobs:
         run: npm run build --if-present
 
       - name: Artefact Coverage Front
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: coverage jest
