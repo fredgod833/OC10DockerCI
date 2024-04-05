@@ -29,9 +29,7 @@ jobs:
         working-directory: ./front
 
       - name: Run tests and reports
-        run: |
-          ng test --watch=false --browsers=ChromeHeadless
-          ng test --code-coverage
+        run: ng test --watch=false --code-coverage
         working-directory: ./front
 
       - name: Set up JDK 17
