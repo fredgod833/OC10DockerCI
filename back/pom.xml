@@ -15,8 +15,8 @@
 	<description>L'application de joke par excellence !</description>
 	<properties>
         <java.version>11</java.version>
-        <sonar.projectKey>cecilia-giusti_bobapp</sonar.projectKey>
-        <sonar.organization>cecilia-giusti</sonar.organization>
+            <sonar.organization>cecilia-giusti</sonar.organization>
+            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
