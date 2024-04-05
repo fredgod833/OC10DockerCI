@@ -30,7 +30,7 @@ jobs:
 
       - name: Run tests and reports
         run: |
-          ng test --code-coverage
+          ng test --watch=false --browsers=ChromeHeadless
           mv coverage/lcov-report/* ../back/target/site/jacoco/
         working-directory: ./front
 
