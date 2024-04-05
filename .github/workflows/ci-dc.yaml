@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
       - name: Install dependencies
         run: npm install
         working-directory: ./front
@@ -49,48 +52,21 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         working-directory: ./back
 
-      - name: Cache SonarCloud packages (Back-End)
+      - name: Cache SonarCloud packages
         uses: actions/cache@v2
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar-cache-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-sonar-cache-
 
-      - name: Cache Maven packages (Back-End)
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2-
-
-      - name: Build and analyze (Front-End)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn -B verify
-          mvn sonar:sonar \
-            -Dsonar.projectKey=joff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD-front \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=cecilia-giusti \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        working-directory: ./front
-
-      - name: Cache SonarCloud packages (Front-End)
-        uses: actions/cache@v2
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-sonar-cache-
-
-      - name: Cache Node modules (Front-End)
+      - name: Cache Node modules
         uses: actions/cache@v2
         with:
           path: ./front/node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-modules-
 
-      - name: Cache Maven packages (Front-End)
+      - name: Cache Maven packages
         uses: actions/cache@v2
         with:
           path: ~/.m2
@@ -102,4 +78,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
