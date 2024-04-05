@@ -1,4 +1,4 @@
-name: BobFront CI
+name: Front Bob Application  CI
 
 on:
   pull_request:
@@ -58,7 +58,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
 
   docker_actions:
-    needs: [build_Front]
+    needs: [build_Front, sonar_quality]
     runs-on: ubuntu-latest
 
     steps:

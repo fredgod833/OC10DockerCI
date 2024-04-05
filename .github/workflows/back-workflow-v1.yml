@@ -1,6 +1,12 @@
-name: BobBack CI
+name: Back Bob Application CI
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - feat/github-actions-configuration
 
 jobs:
   build_Back:
@@ -29,8 +35,8 @@ jobs:
         working-directory: ./back
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=AdrienPiombini_P10-Gerez-un-projet-collaboratif-en-integrant-une-demarche-CI-CD -Dsonar.qualitygate.wait=true
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=adrienpiombini_p10-back -Dsonar.qualitygate.wait=true
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
