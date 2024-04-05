@@ -62,7 +62,7 @@ jobs:
         working-directory: ./front
 
       - name: Build (Front-End)
-        run: npm run build -- --prod
+        run: npx ng build
         working-directory: ./front
 
       - name: SonarCloud Scan (Front-End)
@@ -74,6 +74,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   test:
+    needs: [build-back-end, build-front-end]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
