@@ -62,7 +62,7 @@ jobs:
         working-directory: ./front
 
       - name: Build (Front-End)
-        run: ng build
+        run: npx ng build
         working-directory: ./front
 
       - name: SonarCloud Scan (Front-End)
