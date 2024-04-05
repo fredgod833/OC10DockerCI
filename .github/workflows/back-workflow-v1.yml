@@ -31,6 +31,12 @@ jobs:
           name: coverage jacoco
           path: ./back/target/site/jacoco/
 
+  sonar_Quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
       - name: SonarCloud Scan
         working-directory: ./back
         env:
@@ -38,6 +44,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=adrienpiombini_p10-back -Dsonar.qualitygate.wait=true
 
+  docker_actions:
+    needs: [build_Back]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
