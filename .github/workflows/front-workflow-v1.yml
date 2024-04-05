@@ -7,8 +7,8 @@ on:
   push:
     branches:
       - feat/github-actions-configuration
-    
-on: workflow_dispatch
+
+  workflow_dispatch:
 
 jobs:
   build_Front:
