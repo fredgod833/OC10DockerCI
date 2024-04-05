@@ -62,7 +62,7 @@ jobs:
         working-directory: ./front
 
       - name: Build (Front-End)
-        run: npm run build -- --prod
+        run: npm run build
         working-directory: ./front
 
       - name: SonarCloud Scan (Front-End)
