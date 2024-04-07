@@ -38,7 +38,7 @@ jobs:
           context: ./front
           file: ./front/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}/front
+          tags: ${{ steps.meta.outputs.tags }}-front
           labels: ${{ steps.meta.outputs.labels }}
 
   push-back:
@@ -66,5 +66,5 @@ jobs:
           context: ./back
           file: ./back/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}/back
+          tags: ${{ steps.meta.outputs.tags }}-back
           labels: ${{ steps.meta.outputs.labels }}
