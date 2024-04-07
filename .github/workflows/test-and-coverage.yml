@@ -2,9 +2,9 @@ name: run tests and coverage reports
 
 on:
   push:
-    branches: [main, develop/*]
+    branches: [main, develop, feat/*, fix/*]
   pull_request:
-    branches: [main, develop/*]
+    branches: [main, develop, feat/*, fix/*]
 
 jobs:
   tests-front-end:
