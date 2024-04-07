@@ -36,10 +36,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          java-version: "17"
 
       - name: SonarCloud Scan
+        with:
+          java-version: "17"
+          distribution: "temurin"
         working-directory: ./back
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
