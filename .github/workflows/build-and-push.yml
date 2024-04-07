@@ -11,7 +11,7 @@ name: Publish Docker image
 
 on:
     push:
-      branches: [ "develop", "main", "feat/*" ]
+      branches: [main, develop, feat/*]
 
 jobs:
   push_front:
