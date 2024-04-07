@@ -38,10 +38,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
-          distribution: "adopt"
           java-version: "17"
+          distribution: "temurin"
 
       - name: SonarCloud Scan
         working-directory: ./back
@@ -51,7 +51,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=adrienpiombini_p10-back -Dsonar.qualitygate.wait=true
 
   docker_actions:
-    needs: [build_Back]
+    needs: [build_Back, sonar_Quality]
     runs-on: ubuntu-latest
 
     steps:
