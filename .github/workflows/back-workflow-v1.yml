@@ -31,22 +31,18 @@ jobs:
           name: coverage jacoco
           path: ./back/target/site/jacoco/
 
-  sonar_quality:
+  sonar_Quality:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.projectKey=adrienpiombini_p10-back
-            -Dsonar.qualitygate.wait=true
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
+        working-directory: ./back
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=adrienpiombini_p10-back -Dsonar.qualitygate.wait=true
 
   docker_actions:
     needs: [build_Back]
