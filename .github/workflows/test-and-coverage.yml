@@ -32,3 +32,30 @@ jobs:
         with:
           name: coverage-report
           path: front/coverage/bobapp
+    
+  tests-back-end:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+        working-directory: ./back
+        
+      - name: Run tests and generate jacoco report
+        run: mvn test jacoco:report
+        working-directory: ./back
+  
+      - name: Upload Jacoco report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: back/target/site/jacoco
