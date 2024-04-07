@@ -41,7 +41,7 @@ jobs:
         with:
           java-version: "17"
           distribution: "temurin"
-        working-directory: ./back
+          path: ./back
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
