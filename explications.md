@@ -4,16 +4,16 @@ BobApp, lancée par Bob, connaît une popularité croissante mais souffre de bug
 # Étapes de la Pipeline CI/CD
     
    - **Checkout du répertoire** : Clone le code source pour l'exécution des étapes suivantes.
-    -   **Configuration de Node.js** : Prépare l'environnement Node.js.
-    -   **Installation de Angular CLI** : Installe Angular CLI pour le front-end.
-    -   **Installation des dépendances front-end** : Installe les packages nécessaires du front-end.
-    -   **Tests front-end** : Exécute les tests et génère le rapport de couverture du code.
-    -   **Configuration de JDK** : Prépare l'environnement Java pour le back-end.
-    -   **Construction et analyse du back-end** : Compile le back-end, analyse le code, execute les tests et génère le rapport de couverture du code.
-    -   **Mise en cache** : Cache les dépendances pour accélérer les exécutions futures.
-    -   **SonarCloud Scan** : Analyse le code avec SonarCloud pour la qualité du code.
-    -   **Connexion à Docker Hub** : Authentifie sur Docker Hub pour pousser les images.
-    -   **Construction et déploiement des images Docker** : Construit et pousse les images Docker du front et du back.
+   -    **Configuration de Node.js** : Prépare l'environnement Node.js.
+   - **Installation de Angular CLI** : Installe Angular CLI pour le front-end.
+   -    **Installation des dépendances front-end** : Installe les packages nécessaires du front-end.
+   - **Tests front-end** : Exécute les tests et génère le rapport de couverture du code.
+   -    **Configuration de JDK** : Prépare l'environnement Java pour le back-end.
+   - **Construction et analyse du back-end** : Compile le back-end, analyse le code, execute les tests et génère le rapport de couverture du code.
+   -    **Mise en cache** : Cache les dépendances pour accélérer les exécutions futures.
+   -  **SonarCloud Scan** : Analyse le code avec SonarCloud pour la qualité du code.
+   -    **Connexion à Docker Hub** : Authentifie sur Docker Hub pour pousser les images.
+   -  **Construction et déploiement des images Docker** : Construit et pousse les images Docker du front et du back.
 
 # KPIs Proposés :
     
