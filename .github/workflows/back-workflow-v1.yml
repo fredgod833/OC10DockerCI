@@ -52,7 +52,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=adrienpiombini_p10-back -Dsonar.qualitygate.wait=true
 
   docker_actions:
-    needs: [build_Back, sonar_Quality]
+    needs: [build_Back]
     runs-on: ubuntu-latest
 
     steps:
