@@ -26,7 +26,7 @@ jobs:
         run: mvn clean install
 
       - name: Artefact Coverage Back
-        if: always()
+        # if: always()
         uses: actions/upload-artifact@v4
         with:
           name: coverage jacoco
