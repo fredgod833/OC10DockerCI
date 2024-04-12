@@ -1,4 +1,4 @@
-name: bob aap test
+name: BobApp Test
 
 on:
   pull_request:
@@ -11,3 +11,15 @@ jobs:
     defaults:
       run:
         working-directory: ./back/
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Run tests and generate JaCoCo reports
+        run: |
+          ./mvnw test jacoco:report
