@@ -8,60 +8,32 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  prepare:
-    name: Prepare Environment
+  setup:
+    name: Setup Environments
     runs-on: ubuntu-latest
-    outputs:
-      node-cache-key: ${{ steps.cache-node.outputs.key }}
-      maven-cache-key: ${{ steps.cache-maven.outputs.key }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18.13'
-        id: node-setup
 
-      - name: Cache Node modules
-        id: cache-node
-        uses: actions/cache@v2
-        with:
-          path: ./front/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: 'zulu'
-      
-      - name: Cache Maven packages
-        id: cache-maven
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-m2-
 
-  frontend:
-    name: Build and Test Frontend
-    needs: prepare
+  frontend-build-and-test:
+    name: Build and Test Front-End
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Load Node modules from Cache
-        uses: actions/cache@v2
-        with:
-          path: ./front/node_modules
-          key: ${{ needs.prepare.outputs.node-cache-key }}
-      
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
@@ -69,9 +41,16 @@ jobs:
         run: npm install
         working-directory: ./front
 
-      - name: Run tests and generate coverage
+      - name: Run tests and reports
         run: ng test --watch=false --browsers=ChromeHeadless --code-coverage
         working-directory: ./front
+
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: ./front/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-modules-
 
       - name: Build and push Docker image (Frontend)
         uses: docker/build-push-action@v2
@@ -86,7 +65,7 @@ jobs:
 
   backend:
     name: Build and Test Backend
-    needs: prepare
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
