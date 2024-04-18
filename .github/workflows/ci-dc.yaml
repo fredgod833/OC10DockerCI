@@ -56,6 +56,9 @@ jobs:
           file: ./front/Dockerfile
           push: true
           tags: cecigiu2b/bobapp:front-latest
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
   backend-build-and-test:
     name: Build and Test Back-End
@@ -92,3 +95,6 @@ jobs:
           file: ./back/Dockerfile
           push: true
           tags: cecigiu2b/bobapp:back-latest
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
