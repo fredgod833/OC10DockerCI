@@ -23,7 +23,7 @@ jobs:
         run: npm install
         working-directory: ./front
       - name: Build frontend
-        run: ng build --prod
+        run: ng build 
         working-directory: ./front
       - name: Run frontend tests
         run: ng test --watch=false --browsers=ChromeHeadless --code-coverage
