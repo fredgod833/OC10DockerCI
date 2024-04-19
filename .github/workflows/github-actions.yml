@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           java-version: '11'
+          distribution: 'corretto'
 
       - name: Run the Maven test
         run: mvn clean test
