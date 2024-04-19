@@ -8,37 +8,39 @@ on:
 
 jobs:
   test-frontend:
-    name: Test and Analyze Frontend
+    name: Build, Test and Analyze Frontend
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18.13'
-    - name: Install Angular CLI
-      run: npm install -g @angular/cli
-    - name: Install frontend dependencies
-      run: npm install
-      working-directory: ./front
-    - name: Run tests and reports
-      run: ng test --watch=false --browsers=ChromeHeadless --code-coverage
-      working-directory: ./front
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      with:
-        projectBaseDir: ./front
-    - name: Cache Node modules
-      uses: actions/cache@v2
-      with:
-        path: ./front/node_modules
-        key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-node-modules-
-
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.13'
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      - name: Install frontend dependencies
+        run: npm install
+        working-directory: ./front
+      - name: Build frontend
+        run: ng build --prod
+        working-directory: ./front
+      - name: Run tests and reports
+        run: ng test --watch=false --browsers=ChromeHeadless --code-coverage
+        working-directory: ./front
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: ./front
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: ./front/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-modules-
 
   build-and-scan-backend:
     name: Build and Scan Backend
