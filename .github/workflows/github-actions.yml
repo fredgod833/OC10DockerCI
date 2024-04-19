@@ -25,3 +25,7 @@ jobs:
         run: |
           cd back/
           mvn test
+      - name: Generate JaCoCo coverage report
+        run: |
+          cd back/
+          mvn jacoco:report
