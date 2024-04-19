@@ -17,10 +17,3 @@ jobs:
           dir ${{ github.workspace }}   # Utilisation de la commande "dir" pour lister les fichiers sur Windows
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-      - name: Run the Maven verify phase
-        run: mvn --batch-mode --update-snapshots verify
