@@ -21,3 +21,7 @@ jobs:
         run: |
           dir ${{ github.workspace }}   # Utilisation de la commande "dir" pour lister les fichiers sur Windows
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Run tests in the 'back' directory
+        run: |
+          cd back/
+          mvn test
