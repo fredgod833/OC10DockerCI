@@ -1,4 +1,5 @@
-name: run tests and coverage reports
+name: un tests and coverage reports
+run-name: ${{ github.actor }} is running tests and generating coverage reports 🚀
 
 on:
   push:
