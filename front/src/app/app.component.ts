@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     this.getRandomJoke();
   }
 
-  public getRandomJoke(): void {
-    this.jokesService.getRandomJoke();
-  }
+  // public getRandomJoke(): void {
+  //   this.jokesService.getRandomJoke();
+  // }
 }
