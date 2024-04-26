@@ -30,6 +30,3 @@ jobs:
           name: Angular Tests
           path: 'front/test-results/*.xml'
           reporter: 'java-junit'
-      - name: Read output variables
-        run: |
-          echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
