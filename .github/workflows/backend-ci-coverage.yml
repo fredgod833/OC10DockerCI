@@ -22,14 +22,14 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install # Commande pour construire le projet avec Maven
-        working-directory: ${{ env.BACKEND_DIR }} # Répertoire du back-end
+        working-directory: back
 
       - name: Run tests and generate Jacoco report
         run: mvn test jacoco:report # Commande pour exécuter les tests et générer le rapport Jacoco
-        working-directory: ${{ env.BACKEND_DIR }} # Répertoire du back-end
+        working-directory: back # Répertoire du back-end
 
       - name: Upload Jacoco report artifact
         uses: actions/upload-artifact@v3
         with:
           name: jacoco-report # Nom de l'artefact
-          path: ${{ env.BACKEND_DIR }}/target/site/jacoco # Chemin du rapport Jacoco
+          path: back/target/site/jacoco # Chemin du rapport Jacoco
