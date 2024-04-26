@@ -36,6 +36,7 @@ jobs:
 
       - name: Run tests and generate coverage
         run: npm test -- --coverage
+        working-directory: ${{ github.workspace }}/front
         env:
           CI: true
 
