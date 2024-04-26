@@ -15,11 +15,11 @@ jobs:
           
       - name: Build with Maven
         run: mvn -B clean package
-        path: C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/pom.xml
+        working-directory: C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/pom.xml
 
       - name: Test with JaCoCo
         run: mvn test jacoco:report
-        path: C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/pom.xml
+        working-directory: C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/pom.xml
         
       - name: Archive JaCoCo reports
         uses: actions/upload-artifact@v2
