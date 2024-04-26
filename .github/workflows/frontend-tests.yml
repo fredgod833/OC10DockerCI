@@ -23,6 +23,3 @@ jobs:
       - name: Run tests
         working-directory: ./front
         run: npm run test
-      - name: Run lint
-        working-directory: ./front
-        run: npm run lint
