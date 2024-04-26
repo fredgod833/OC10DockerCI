@@ -31,10 +31,12 @@ jobs:
       - name: Check Jacoco report contents
         working-directory: ./back
         run: cat target/site/jacoco/jacoco.xml
-      - name: Test Reporting
-        uses: phoenix-actions/test-reporting@v14
-        if: always()
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.6.1
         with:
-          name: Spring Boot Tests
-          path: 'back/target/site/jacoco/*.xml'
-          reporter: 'java-junit'
+          paths: |
+            back/target/site/jacoco/jacoco.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 40
+          min-coverage-changed-files: 60
