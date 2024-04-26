@@ -35,10 +35,13 @@ jobs:
           node-version: '14'
 
       - name: Install angular-CLI
+        run: npm install -g @angular/cli
+
+      - name: Install dependenties
         run: npm install
         
       - name: Run tests and generate coverage
-        run: npm test -- --coverage
+        run: ng test -- --code-coverage
         working-directory: ${{ github.workspace }}/front
         env:
           CI: true
