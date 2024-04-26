@@ -28,6 +28,9 @@ jobs:
       - name: List test report files
         working-directory: ./back
         run: ls -R target/site/jacoco/
+      - name: Check Jacoco report contents
+        working-directory: ./back
+        run: cat target/site/jacoco/jacoco.xml
       - name: Test Reporting
         uses: phoenix-actions/test-reporting@v14
         if: always()
