@@ -33,5 +33,5 @@ jobs:
         if: always()
         with:
           name: Spring Boot Tests
-          path: 'back/target/site/jacoco/jacoco.xml'
+          path: 'target/site/jacoco/jacoco.xml'
           reporter: 'java-junit'
