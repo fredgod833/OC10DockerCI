@@ -26,3 +26,21 @@ jobs:
         with:
           name: jacoco-reports
           path: target/site/jacoco/
+
+        # COVERAGE RAPPORTS FRONT 🚀
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Run tests and generate coverage
+        run: npm test -- --coverage
+        env:
+          CI: true
+
+      - name: Archive test and coverage reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-and-coverage-reports
+          path: coverage/
