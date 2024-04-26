@@ -35,7 +35,7 @@ jobs:
           node-version: '14'
 
       - name: Run tests and generate coverage
-        run: npm test -- --coverage
+        run: ng test -- --coverage
         working-directory: ${{ github.workspace }}/front
         env:
           CI: true
