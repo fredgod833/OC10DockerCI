@@ -22,4 +22,6 @@ jobs:
         run: npm install
       - name: Run tests
         working-directory: ./front
-        run: npm run test -- --no-watch --no-progress
+      - run: npm ci
+      - run: npm run test:prod
+      - run: npm run lint
