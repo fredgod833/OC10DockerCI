@@ -17,15 +17,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'
-      - name: Install dependencies
-        working-directory: ./front
-        run: npm install
-      - name: Run tests
+      - name: install dependencies
         working-directory: ./front
         run: npm ci
-      - name: Run production tests
+      - name: Run tests
         working-directory: ./front
-        run: npm run test:prod
+        run: npm run test
       - name: Run lint
         working-directory: ./front
         run: npm run lint
