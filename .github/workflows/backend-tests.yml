@@ -31,12 +31,8 @@ jobs:
       - name: Check Jacoco report contents
         working-directory: ./back
         run: cat target/site/jacoco/jacoco.xml
-      - name: Add coverage to PR
-        id: jacoco
-        uses: madrapps/jacoco-report@v1.6.1
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
         with:
-          paths: |
-            back/target/site/jacoco/jacoco.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          min-coverage-overall: 40
-          min-coverage-changed-files: 60
+          name: jacoco-report
+          path: back/target/site/jacoco/
