@@ -37,7 +37,7 @@ jobs:
         uses: PavanMudigonda/jacoco-reporter@v5.0
         with:
           coverage_results_path: back/target/site/jacoco/jacoco.xml
-          coverage_report_name: Coverage
+          coverage_report_name: Back Spring Boot Tests
           coverage_report_title: JaCoCo
           github_token: ${{ secrets.GITHUB_TOKEN }}
           skip_check_run: false
