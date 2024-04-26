@@ -34,6 +34,9 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Install angular-CLI
+        run: npm install @angular/cli --save-dev
+        
       - name: Run tests and generate coverage
         run: ng test -- --coverage
         working-directory: ${{ github.workspace }}/front
