@@ -15,9 +15,11 @@ jobs:
           
       - name: Build with Maven
         run: mvn -B clean package
+        working-directory: Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/pom.xml
 
       - name: Test with JaCoCo
         run: mvn test jacoco:report
+        working-directory: Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/pom.xml
 
       - name: Archive JaCoCo reports
         uses: actions/upload-artifact@v2
