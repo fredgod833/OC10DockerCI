@@ -28,10 +28,6 @@ jobs:
       - name: List test report files
         working-directory: ./back
         run: ls -R target/site/jacoco/
-      - name: Download Jacoco report for Test Reporting
-        uses: actions/download-artifact@v2
-        with:
-          name: jacoco-report
       - name: Test Reporting
         uses: phoenix-actions/test-reporting@v14
         if: always()
