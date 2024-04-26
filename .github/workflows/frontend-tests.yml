@@ -23,3 +23,10 @@ jobs:
       - name: Run tests
         working-directory: ./front
         run: npm run test
+      - name: Test Reporting
+        uses: phoenix-actions/test-reporting@v14
+        if: always()
+        with:
+          name: Angular Tests
+          path: 'test-results/*.xml'
+          reporter: 'java-junit'

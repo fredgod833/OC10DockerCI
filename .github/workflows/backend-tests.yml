@@ -25,3 +25,10 @@ jobs:
       - name: Run tests and generate Jacoco report
         working-directory: ./back
         run: mvn test jacoco:report
+      - name: Test Reporting
+        uses: phoenix-actions/test-reporting@v14
+        if: always()
+        with:
+          name: Spring Boot Tests
+          path: 'back/target/site/jacoco/jacoco.xml'
+          reporter: 'java-junit'
