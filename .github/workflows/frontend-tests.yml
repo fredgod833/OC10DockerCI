@@ -20,12 +20,6 @@ jobs:
       - name: install dependencies
         working-directory: ./front
         run: npm ci
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-
-      - name: Install Angular Material
-        run: npm install @angular/material
-
       - name: Run tests
         working-directory: ./front
         run: npm run test

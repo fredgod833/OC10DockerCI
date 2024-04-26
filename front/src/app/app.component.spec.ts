@@ -9,7 +9,6 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [HttpClientTestingModule],
-      schemas: [NO_ERRORS_SCHEMA],
       providers: [JokesService]
     }).compileComponents();
   });
