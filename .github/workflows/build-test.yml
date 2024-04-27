@@ -53,8 +53,8 @@ jobs:
       - name: Install frontend dependencies and run tests
         run: |
           npm ci
-          npm test
-          npm run test -- --code-coverage --no-watch --browsers=ChromeHeadless
+          ng test --browsers=ChromeHeadless --watch=false --code-coverage
+          ng build --prod
 
       - name: Frontend code coverage report artifact
         uses: actions/upload-artifact@v4
