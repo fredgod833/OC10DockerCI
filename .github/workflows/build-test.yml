@@ -2,9 +2,9 @@ name: Build and test
 
 on:
   push:
-    branches: ["main"]
+    branches: [master, dev/*]
   pull_request:
-    branches: ["main"]
+    branches: [master, dev/*]
     types: [opened, reopened]
 
 jobs:
@@ -53,8 +53,8 @@ jobs:
       - name: Install frontend dependencies and run tests
         run: |
           npm ci
-          ng test --browsers=ChromeHeadless --watch=false --code-coverage
-          ng build --prod
+          npm run build:prod
+          npm run test:prod
 
       - name: Frontend code coverage report artifact
         uses: actions/upload-artifact@v4
