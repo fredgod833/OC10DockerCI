@@ -24,9 +24,6 @@ jobs:
         run: mvn clean install
         working-directory: ${{ github.workspace }}/back
 
-      - name: Build backend
-        run: mvn spring-boot:run
-
       - name: Test backend
         run: mvn clean install
 
@@ -47,7 +44,7 @@ jobs:
         working-directory: ${{ github.workspace }}/front
 
       - name: Build frontend
-        run: npm run build
+        run: npm run build --if-present
 
       - name: Test frontend
         run: npm test
