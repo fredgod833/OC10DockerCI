@@ -20,11 +20,15 @@ jobs:
           java-version: 11
           distribution: "temurin"
 
-      - name: Build backend
+      - name: Install backend dependencies
         run: mvn clean install
+        working-directory: ${{ github.workspace }}/back
+
+      - name: Build backend
+        run: mvn spring-boot:run
 
       - name: Test backend
-        run: mvn test
+        run: mvn clean install
 
   frontend:
     runs-on: ubuntu-latest
@@ -39,7 +43,7 @@ jobs:
           node-version: 20
 
       - name: Install frontend dependencies
-        run: npm install
+        run: npm install && npm ci
         working-directory: ${{ github.workspace }}/front
 
       - name: Build frontend
