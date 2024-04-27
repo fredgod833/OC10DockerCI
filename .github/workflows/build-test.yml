@@ -45,8 +45,8 @@ jobs:
       - name: Install frontend dependencies and run tests
         run: |
           npm ci
+          npm test
           npm run build
-          npm run test:prod
         working-directory: ${{ github.workspace }}/front
 
       - name: Frontend code coverage report artifact
