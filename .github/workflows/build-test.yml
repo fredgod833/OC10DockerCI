@@ -32,6 +32,9 @@ jobs:
       - name: Install backend dependencies
         run: mvn clean install -U
 
+      - name: Execute tests
+        run: mvn clean test
+
       - name: Backend code coverage report artifact
         uses: actions/upload-artifact@v4
         with:
