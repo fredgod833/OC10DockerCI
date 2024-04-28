@@ -2,7 +2,7 @@
 
 Clone project:
 
-> git clone XXXXX
+> git clone https://github.com/OpenClassrooms-Student-Center/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
 
 ## Front-end 
 
