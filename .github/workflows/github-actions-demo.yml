@@ -37,21 +37,15 @@ jobs:
         with:
           node-version: '20.12.2'
 
-      - name: Install angular-CLI
-        run: npm install -g @angular/cli
-        
-      - name: Install dependenties
-        run: npm install
-        working-directory: ${{ github.workspace }}/front
-        
-      - name: Run tests and generate coverage
-        run: ng test --browsers=ChromeHeadless --code-coverage
-        continue-on-error: true
-        working-directory: ${{ github.workspace }}/front
+      - name: Install dependencies and run tests
+        run: |
+          cd ${{ github.workspace }}/front
+          npm install -g @angular/cli
+          npm install
+          ng test --browsers=ChromeHeadless --code-coverage
 
       - name: Archive test and coverage reports
         uses: actions/upload-artifact@v2
         with:
           name: test-and-coverage-reports
-          path: coverage/
-        if: success() 
+          path: ${{ github.workspace }}/front/coverage/ 
