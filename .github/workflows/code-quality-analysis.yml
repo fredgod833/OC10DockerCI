@@ -12,6 +12,10 @@ on:
 
 jobs:
   backend:
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/back
+
     name: Analyze backend code
     runs-on: ubuntu-latest
     steps:
