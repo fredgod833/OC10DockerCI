@@ -16,7 +16,7 @@ jobs:
       run:
         working-directory: ${{ github.workspace }}/back
 
-    name: Backend
+    name: Sonar Cloud Back-End Scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -57,7 +57,7 @@ jobs:
       run:
         working-directory: ${{ github.workspace }}/front
 
-    name: Front-End
+    name: Sonar Cloud Front-End Scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
