@@ -46,6 +46,11 @@ jobs:
         run: |
           echo "Setting up Back-End code quality analysis"
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=LePhenix47_Lahouiti_Younes_P10_20042024
+      - name: Upload SonarQube Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: sonarqube-report
+          path: .scannerwork/report-task.txt
 
   frontend:
     defaults:
