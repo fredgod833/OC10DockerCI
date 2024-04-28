@@ -43,15 +43,11 @@ jobs:
       - name: Install dependenties
         run: npm install
         working-directory: ${{ github.workspace }}/front
-
-      - name: Add dependenties to project
-        run: ng add @angular/material
-        working-directory: ${{ github.workspace }}/front
         
       - name: Run tests and generate coverage
-        run: ng test --browsers=ChromeHeadless --code-coverage
-        working-directory: ${{ github.workspace }}/front
+        run: npm test --browsers=ChromeHeadless --code-coverage
         continue-on-error: true
+        working-directory: ${{ github.workspace }}/front
 
       - name: Archive test and coverage reports
         uses: actions/upload-artifact@v2
