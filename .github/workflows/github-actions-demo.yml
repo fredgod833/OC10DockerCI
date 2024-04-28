@@ -44,6 +44,10 @@ jobs:
         run: npm install
         working-directory: ${{ github.workspace }}/front
 
+      - name: Add dependenties to project
+        run: ng add
+        working-directory: ${{ github.workspace }}/front
+        
       - name: Run tests and generate coverage
         run: ng test --browsers=ChromeHeadless --code-coverage
         working-directory: ${{ github.workspace }}/front
