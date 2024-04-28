@@ -41,6 +41,10 @@ jobs:
       run:
         working-directory: ${{ github.workspace }}/front
 
+    strategy:
+      matrix:
+        node-version: [10.x]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -52,6 +56,7 @@ jobs:
 
       - name: Install frontend dependencies and run tests
         run: |
+          npm install -g @angular/cli
           npm ci
           npm run build:prod
           npm run test:prod
