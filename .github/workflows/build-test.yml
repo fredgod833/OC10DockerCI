@@ -2,9 +2,9 @@ name: Build and test
 
 on:
   push:
-    branches: [master, dev/*]
+    branches: [main, dev/*]
   pull_request:
-    branches: [master, dev/*]
+    branches: [main, dev/*]
     types: [opened, reopened]
 
 jobs:
