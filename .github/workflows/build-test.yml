@@ -61,9 +61,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install frontend dependencies and run tests
+      - name: Install frontend dependencies
         run: |
           npm ci
+
+      - name: Execute tests
+        run: |
           npm run test:prod
 
       - name: Frontend code coverage report artifact
