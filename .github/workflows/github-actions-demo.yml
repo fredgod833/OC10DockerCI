@@ -42,8 +42,13 @@ jobs:
           cd ${{ github.workspace }}/front
           npm install -g @angular/cli
           npm install
-          ng test --browsers=ChromeHeadless --code-coverage
 
+      - name: Run linter Angular (ESLint)
+        run: npm run lint
+
+      - name: Run tests and generate coverage
+        run: ng test --browsers=ChromeHeadless --code-coverage
+        
       - name: Archive test and coverage reports
         uses: actions/upload-artifact@v2
         with:
