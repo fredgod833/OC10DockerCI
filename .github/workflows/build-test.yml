@@ -56,8 +56,9 @@ jobs:
 
       - name: Install frontend dependencies and run tests
         run: |
-          npm install -g @angular/cli
-          npm ci
+          npm install -g @angular/cli@14.2.1
+          npm link @angular/cli
+          npm install
           npm run build:prod
           npm run test:prod
 
