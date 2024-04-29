@@ -37,11 +37,12 @@ jobs:
         with:
           node-version: '20.12.2'
 
-      - name: Install dependencies
+      - name: Clean npm and Install dependencies
         run: |
           cd ${{ github.workspace }}/front
-          npm install -g @angular/cli
-          npm install
+            run: |
+            npm cache clean --force
+            npm install
 
       - name: Run tests and generate coverage
         run: npm test --browsers=ChromeHeadless --code-coverage
