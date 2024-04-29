@@ -1,0 +1,6 @@
+projectKey=Bob
+serverUrl=http://localhost:9000
+serverVersion=10.5.0.89998
+dashboardUrl=http://localhost:9000/dashboard?id=Bob
+ceTaskId=3eae1c96-2ec9-42d1-b90c-4e142efefe7b
+ceTaskUrl=http://localhost:9000/api/ce/task?id=3eae1c96-2ec9-42d1-b90c-4e142efefe7b
