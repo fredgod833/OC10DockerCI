@@ -12,6 +12,9 @@ jobs:
   build:
     name: Build and Scan with SonarQube
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./back
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,7 +36,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean verify -Dmaven.test.skip=false
 
-      - name: SonarQube Scan
+      - name: SonarQube Scan Back end
         uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
