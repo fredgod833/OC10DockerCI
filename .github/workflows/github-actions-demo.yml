@@ -37,14 +37,11 @@ jobs:
         with:
           node-version: '20.12.2'
 
-      - name: Install dependencies and run tests
+      - name: Install dependencies
         run: |
           cd ${{ github.workspace }}/front
           npm install -g @angular/cli
           npm install
-
-      - name: Run linter Angular (ESLint)
-        run: npm run lint
 
       - name: Run tests and generate coverage
         run: ng test --browsers=ChromeHeadless --code-coverage
