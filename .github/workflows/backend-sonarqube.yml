@@ -41,16 +41,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        with:
-          args: >
-            -Dsonar.projectKey=mon-projet
-            -Dsonar.projectName=Mon Projet Backend
-            -Dsonar.projectVersion=1.0
-            -Dsonar.sources=src/main/java
-            -Dsonar.tests=src/test/java
-            -Dsonar.java.binaries=target/classes
-            -Dsonar.java.codeCoveragePlugin=jacoco
-            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-            -Dsonar.exclusions=**/*Test.java,**/*Tests.java,**/.DS_Store
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+        run: |
+          cd back
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
