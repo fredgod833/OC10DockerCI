@@ -27,7 +27,7 @@ jobs:
         run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
         working-directory: front
        
-
+       
       - name: Upload Karma report artifact
         uses: actions/upload-artifact@v3
         with:
