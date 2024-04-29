@@ -44,7 +44,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=mon-projet
-            -Dsonar.projectName='Mon Projet Backend'
+            -Dsonar.projectName=Mon Projet Backend
             -Dsonar.projectVersion=1.0
             -Dsonar.sources=src/main/java
             -Dsonar.tests=src/test/java
