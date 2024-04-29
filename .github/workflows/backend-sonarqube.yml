@@ -52,5 +52,5 @@ jobs:
             -Dsonar.java.codeCoveragePlugin=jacoco
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             -Dsonar.exclusions=**/*Test.java,**/*Tests.java,**/.DS_Store
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
