@@ -58,12 +58,12 @@ jobs:
       - name: Clean npm and Install dependencies
         run: |
           cd ${{ github.workspace }}/front
-            run: |
-            npm cache clean --force
-            npm install
+          npm cache clean --force
+          npm install
 
       - name: Run tests and generate coverage
-        run: npm test --prefix ${{ github.workspace }}/front -- --browsers=ChromeHeadless --code-coverage
+        run: |
+          npm test --prefix ${{ github.workspace }}/front -- --browsers=ChromeHeadless --code-coverage --watch=false
         
       - name: Archive test and coverage reports
         uses: actions/upload-artifact@v2
