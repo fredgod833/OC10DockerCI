@@ -1,0 +1,55 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run frontend tests and generate coverage report
+      run: npm test -- --no-watch --code-coverage
+
+    - name: Analyze frontend code with SonarQube
+      uses: sonarsource/sonarcloud-github-action@v1
+      with:
+        organization: "<your-organization>"
+        token: ${{ secrets.SONAR_TOKEN }}
+        projectKey: "<FrontEndBobApp-key>"
+        projectName: "<backendBobApp>"
+        sources: "src"
+        language: "javascript"
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+    - name: Build and push Docker image for frontend
+      uses: docker/build-push-action@v2
+      with:
+        context: ./frontend
+        file: ./frontend/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/frontend-image:latest

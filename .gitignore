@@ -39,3 +39,7 @@ build/
 .mvn
 
 .angular
+
+## env ##
+back/.env
+front/.env
