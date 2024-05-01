@@ -1,12 +1,10 @@
 # BobApp
 
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=lephenix47_Lahouiti_Younes_P10_20042024&metric=coverage)](https://sonarcloud.io/summary/new_code?id=lephenix47_Lahouiti_Younes_P10_20042024)
-
 Clone project:
 
-> git clone https://github.com/OpenClassrooms-Student-Center/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+> git clone <https://github.com/OpenClassrooms-Student-Center/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD>
 
-## Front-end 
+## Front-end
 
 Go inside folder the front folder:
 
@@ -42,7 +40,7 @@ Install dependencies:
 
 Launch Back-end:
 
->  mvn spring-boot:run
+> mvn spring-boot:run
 
 Launch the tests:
 
@@ -56,4 +54,4 @@ Build the container:
 
 Start the container:
 
-> docker run -p 8080:8080 --name bobapp-back -d bobapp-back 
+> docker run -p 8080:8080 --name bobapp-back -d bobapp-back
