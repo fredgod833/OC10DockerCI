@@ -35,10 +35,15 @@ jobs:
       - name: Execute tests
         run: mvn clean test
 
-      - name: Create new code coverage report
+      - name: Debug Maven Settings
         run: |
-          rm -rf /.m2/repository/org/apache/maven/plugins 
-          mvn clean package site
+          echo "Maven Settings:"
+          cat ~/.m2/settings.xml
+          echo "Maven Local Repository Path:"
+          echo $HOME/.m2/repository
+
+      - name: Create new code coverage report
+        run: mvn clean site
 
       - name: Backend code coverage report artifact
         uses: actions/upload-artifact@v4
