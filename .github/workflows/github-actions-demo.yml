@@ -12,22 +12,19 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-
-      - name: Build and analyze          
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - uses: sonarsource/sonarqube-scan-action@master
-        env:
-            SONAR_TOKEN: sqp_4ef5499820809773e15f1044e87f22525a090da9
-            SONAR_HOST_URL: http://localhost:9000
-            # If you wish to fail your job when the Quality Gate is red, uncomment the
-            # following lines. This would typically be used to fail a deployment.
-            # - uses: sonarsource/sonarqube-quality-gate-action@master
-            #   timeout-minutes: 5
-            #   env:
-            #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
+      - name: SonarQube Scan
+        run: |
+          sudo apt-get install -y openjdk-11-jdk
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+          unzip sonar-scanner-cli-4.6.2.2472-linux.zip
+          export PATH=$PATH:$PWD/sonar-scanner-cli-4.6.2.2472-linux/bin
+          sonar-scanner \
+            -Dsonar.projectKey=ci-cd_sonarqube \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=http://localhost:9000 \
+            -Dsonar.login=sqp_4ef5499820809773e15f1044e87f22525a090da9
+
       - name: Build with Maven
         run: mvn -B clean package
         working-directory: ${{ github.workspace }}/back
