@@ -52,7 +52,7 @@ jobs:
           context: ./front
           file: ./front/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/backend-image:latest
 
 
 
