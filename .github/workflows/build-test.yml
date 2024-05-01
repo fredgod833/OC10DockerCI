@@ -28,7 +28,7 @@ jobs:
         with:
           java-version: ${{ matrix.java-version }}
           distribution: "temurin"
-          cache: maven
+          cache: "maven"
 
       - name: Install backend dependencies
         run: mvn clean install
@@ -36,8 +36,8 @@ jobs:
       - name: Execute tests
         run: mvn clean test
 
-      - name: Create new code coverage report
-        run: mvn clean site
+      - name: Creation of the Jacoco code coverage report
+        run: mvn jacoco:report
 
       - name: Backend code coverage report artifact
         uses: actions/upload-artifact@v4
@@ -68,10 +68,6 @@ jobs:
       - name: Install frontend dependencies
         run: |
           npm ci
-
-      - name: Build frontend
-        run: |
-          npm run build:prod
 
       - name: Execute tests
         run: |
