@@ -1,5 +1,7 @@
 # BobApp
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=lephenix47_Lahouiti_Younes_P10_20042024&metric=coverage)](https://sonarcloud.io/summary/new_code?id=lephenix47_Lahouiti_Younes_P10_20042024)
+
 Clone project:
 
 > git clone https://github.com/OpenClassrooms-Student-Center/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
