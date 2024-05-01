@@ -20,10 +20,10 @@ jobs:
           unzip sonar-scanner-cli-4.6.2.2472-linux.zip
           export PATH=$PATH:$PWD/sonar-scanner-cli-4.6.2.2472-linux/bin
           sonar-scanner \
-            -Dsonar.projectKey=ci-cd_sonarqube \
+            -Dsonar.projectKey=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.sources=. \
-            -Dsonar.host.url=http://localhost:9000/tutorials?id=ci-cd_sonarqube \
-            -Dsonar.login=sqp_4ef5499820809773e15f1044e87f22525a090da9
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Maven
         run: mvn -B clean package
