@@ -51,4 +51,4 @@ jobs:
           context: ./back
           file: ./back/Dockerfile
           push: true
-          tags: your-dockerhub-username/backend-image:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}
