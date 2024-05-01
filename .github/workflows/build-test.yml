@@ -35,6 +35,9 @@ jobs:
       - name: Execute tests
         run: mvn clean test
 
+      - name: Create new code coverage report
+        run: mvn clean site
+
       - name: Backend code coverage report artifact
         uses: actions/upload-artifact@v4
         with:
