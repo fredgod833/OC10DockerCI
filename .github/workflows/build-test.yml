@@ -36,7 +36,9 @@ jobs:
         run: mvn clean test
 
       - name: Create new code coverage report
-        run: mvn clean site -X
+        run: |
+          rm -rf /.m2/repository/org/apache/maven/plugins 
+          mvn clean package site
 
       - name: Backend code coverage report artifact
         uses: actions/upload-artifact@v4
