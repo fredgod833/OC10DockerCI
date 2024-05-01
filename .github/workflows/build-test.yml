@@ -28,19 +28,13 @@ jobs:
         with:
           java-version: ${{ matrix.java-version }}
           distribution: "temurin"
+          cache: maven
 
       - name: Install backend dependencies
         run: mvn clean install
 
       - name: Execute tests
         run: mvn clean test
-
-      - name: Debug Maven Settings
-        run: |
-          echo "Maven Settings:"
-          cat ~/.m2/settings.xml
-          echo "Maven Local Repository Path:"
-          echo $HOME/.m2/repository
 
       - name: Create new code coverage report
         run: mvn clean site
