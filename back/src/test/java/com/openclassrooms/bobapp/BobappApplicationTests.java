@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class BobappApplicationTests {
 
 	@Test
+	// Test if the context loads
 	void contextLoads() {
 	}
 
