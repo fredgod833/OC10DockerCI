@@ -18,7 +18,12 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: sonarsource/sonar-scanner-cli
-        run: sonar-scanner -Dsonar.projectKey=ci-cd_sonarqube -Dsonar.sources=. -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/target -Dsonar.projectBaseDir=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} -Dsonar.token=${{secrets.SONAR_TOKEN}}
+        run: sonar-scanner -Dsonar.projectKey=ci-cd_sonarqube \
+             -Dsonar.sources=. \ 
+             -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/target \ 
+             -Dsonar.projectBaseDir=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \ 
+             -Dsonar.host.url=SONAR_HOST_URL \ 
+             -Dsonar.token=SONAR_TOKEN
 
       - name: Build with Maven
         run: mvn -B clean package
