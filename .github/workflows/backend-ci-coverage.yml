@@ -40,6 +40,7 @@ jobs:
   analyse_sonarcloud:
     name: SonarCloud analyse
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -70,6 +71,7 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=shiirows_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
 
   publish_docker_hub:
+    name: Publish Docker image
     runs-on: ubuntu-latest
     
     steps:
@@ -85,8 +87,8 @@ jobs:
       - name: Build and push Docker image for backend
         uses: docker/build-push-action@v2
         with:
-          context: ./back
-          file: ./back/Dockerfile
+          context: back
+          file: back/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/backend-image:latest
 
