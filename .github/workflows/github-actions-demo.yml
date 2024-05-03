@@ -17,6 +17,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Download SonarScanner CLI
+        run: curl -o sonar-scanner.zip -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip
+        
+      - name: Extract SonarScanner CLI
+        run: unzip sonar-scanner.zip -d sonar-scanner
+        
       - name: sonarsource/sonar-scanner-cli
         run: sonar-scanner.bat -Dsonar.projectKey=ci-cd_sonarqube \
              -Dsonar.sources=. \ 
