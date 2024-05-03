@@ -1,8 +1,12 @@
 name: GitHub Actions 🚀
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+      - patch-1
 jobs:
   build:
-    runs-on: windows
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -19,8 +23,7 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: sonarsource/sonar-scanner-cli
-        run: C:/Users/33612/Downloads/sonar-scanner-cli-5.0.1.3006-windows/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat \ 
-             -Dsonar.projectKey=ci-cd_sonarqube \
+        run: sonar-scanner \
              -Dsonar.sources=. \ 
              -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/target \ 
              -Dsonar.projectBaseDir=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \ 
