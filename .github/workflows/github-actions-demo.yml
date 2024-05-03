@@ -23,9 +23,9 @@ jobs:
         
       - name: Extract SonarScanner CLI
         run: unzip sonar-scanner.zip -d sonar-scanner
-        
+
       - name: sonarsource/sonar-scanner-cli
-        run: sonar-scanner.bat -Dsonar.projectKey=ci-cd_sonarqube \
+        run: sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=ci-cd_sonarqube \
              -Dsonar.sources=. \ 
              -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/target \ 
              -Dsonar.projectBaseDir=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \ 
