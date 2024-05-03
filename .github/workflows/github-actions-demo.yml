@@ -25,10 +25,10 @@ jobs:
         run: unzip sonar-scanner.zip -d sonar-scanner
 
       - name: sonarsource/sonar-scanner-cli
-        run: sonar-scanner \ 
+        run: C:/Users/33612/Downloads/sonar-scanner-cli-5.0.1.3006-windows/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat \ 
              -Dsonar.projectKey=ci-cd_sonarqube \
              -Dsonar.sources=. \ 
-             -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/.scannerwork \ 
+             -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/target \ 
              -Dsonar.projectBaseDir=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \ 
              -Dsonar.host.url=SONAR_HOST_URL \ 
              -Dsonar.token=SONAR_TOKEN
