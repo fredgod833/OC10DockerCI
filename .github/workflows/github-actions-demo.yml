@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: sonarsource/sonar-scanner-cli
-        run: sonar-scanner -Dsonar.projectKey=ci-cd_sonarqube \
+        run: sonar-scanner.bat -Dsonar.projectKey=ci-cd_sonarqube \
              -Dsonar.sources=. \ 
              -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/target \ 
              -Dsonar.projectBaseDir=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \ 
