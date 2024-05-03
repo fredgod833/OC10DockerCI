@@ -71,6 +71,7 @@ jobs:
 
       - name: Execute tests
         run: |
+          npm run build
           npm run test:prod
 
       - name: Frontend code coverage report artifact
