@@ -51,6 +51,14 @@ jobs:
         run: ls -l coverage/
         working-directory: ./front
 
+      - name: Display Jacoco Report Content
+        run: cat back/target/site/jacoco/jacoco.xml
+        working-directory: ./
+
+      - name: Display TypeScript Coverage Report Content
+        run: cat front/coverage/lcov.info
+        working-directory: ./
+
       # SonarCloud analysis
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2.1.1
