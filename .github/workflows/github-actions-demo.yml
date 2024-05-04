@@ -30,12 +30,11 @@ jobs:
 
       - name: sonarsource/sonar-scanner-cli
         run: |
-          ./sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner
-             -Dsonar.sources=. \ 
-             -Dsonar.java.binaries=./back/target \ 
-             -Dsonar.projectBaseDir=. \ 
-             -Dsonar.host.url=SONAR_HOST_URL \ 
-             -Dsonar.token=SONAR_TOKEN
+          docker run --rm \
+          -e SONAR_HOST_URL=http://172.17.0.2:9000 \
+          -v C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/sonar-project.properties:/usr/src \
+          sonarsource/sonar-scanner-cli
+
 
       - name: Build with Maven
         run: mvn -B clean package
