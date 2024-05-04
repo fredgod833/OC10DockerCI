@@ -83,3 +83,4 @@ jobs:
             -Dsonar.projectKey=citizensyd_oc-testing-java-cours
             -Dsonar.organization=citizensyd
             -Dsonar.projectSettings=./sonar-project.properties
+            -Dsonar.exclusions=**/*.java
