@@ -32,7 +32,7 @@ jobs:
         run: |
           docker run --rm \
           -e SONAR_HOST_URL=http://172.17.0.2:9000 \
-          -v C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/sonar-project.properties:/usr/src \
+          -v "C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/sonar-project.properties:/usr/src" \
           sonarsource/sonar-scanner-cli
 
 
