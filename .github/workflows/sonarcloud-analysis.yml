@@ -1,11 +1,12 @@
 name: Full Stack CI
 
 on:
-  workflow_run:
-    workflows: [ "Backend Test", "Frontend Test" ]
-    types:
-      - completed
-
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
 jobs:
 
   build-and-scan:
@@ -30,6 +31,16 @@ jobs:
         working-directory: ./back
 
       - run: npm install && npm run build
+        working-directory: ./front
+
+      # Run backend tests
+      - name: Run Backend Tests
+        run: mvn test
+        working-directory: ./back
+
+      # Run frontend tests
+      - name: Run Frontend Tests
+        run: npm test
         working-directory: ./front
 
       - name: List Jacoco Coverage Report
