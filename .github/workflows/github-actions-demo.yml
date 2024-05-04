@@ -34,7 +34,7 @@ jobs:
              -Dsonar.sources=. \ 
              -Dsonar.java.binaries=./back/target \ 
              -Dsonar.projectBaseDir=. \ 
-             -Dsonar.host.url=http://localhost:9000 \ 
+             -Dsonar.host.url=http://172.17.0.2:9000 \ 
              -Dsonar.token=sqp_859fc16c93354df1d4bed295bd2f4abe7f77bbfe
 
       - name: Build with Maven
