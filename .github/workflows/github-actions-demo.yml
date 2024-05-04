@@ -30,7 +30,7 @@ jobs:
 
       - name: sonarsource/sonar-scanner-cli
         run: |
-          sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
+          ./sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner
              -Dsonar.sources=. \ 
              -Dsonar.java.binaries=./back/target \ 
              -Dsonar.projectBaseDir=. \ 
