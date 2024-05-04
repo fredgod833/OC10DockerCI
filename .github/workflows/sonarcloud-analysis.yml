@@ -67,11 +67,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Print working directory
-        run: pwd
-
-      - name: List directory contents
-        run: ls -lah
+      - name: Run tests
+        run: npm test
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
