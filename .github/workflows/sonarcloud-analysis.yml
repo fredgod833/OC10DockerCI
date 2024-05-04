@@ -1,12 +1,10 @@
 name: Full Stack CI
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_run:
+    workflows: [ "Backend Test", "Frontend Test" ]
+    types:
+      - completed
 
 jobs:
   backend-build-and-scan:
