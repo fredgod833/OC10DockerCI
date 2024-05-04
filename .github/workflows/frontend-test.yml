@@ -23,6 +23,9 @@ jobs:
       - name: Run tests
         working-directory: ./front
         run: npm run test
+      - name: List TypeScript Coverage Report
+        run: ls -l coverage/
+        working-directory: ./front
       - name: Test Reporting
         uses: phoenix-actions/test-reporting@v14
         if: always()

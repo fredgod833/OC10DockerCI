@@ -33,11 +33,11 @@ jobs:
         working-directory: ./front
 
       - name: List Jacoco Coverage Report
-        run: ls -l back/target/site/jacoco/
+        run: ls -l target/site/jacoco/
         working-directory: ./back
 
       - name: List TypeScript Coverage Report
-        run: ls -l front/coverage/
+        run: ls -l coverage/
         working-directory: ./front
 
       # SonarCloud analysis
