@@ -21,7 +21,7 @@ jobs:
         run: |
               wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
               unzip sonar-scanner-cli-5.0.1.3006-linux.zip
-              export PATH=$PATH:$PWD/sonar-scanner-5.0.1.3006-linux/bin
+              export PATH="/opt/hostedtoolcache/Java_Adopt_jdk/11.0.23-9/x64/bin/sonar-scanner-5.0.1.3006-linux/bin:$PATH"
 
       - name: Debug
         run: |
