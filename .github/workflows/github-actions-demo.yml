@@ -29,7 +29,7 @@ jobs:
           ls -l sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner
 
       - name: sonarsource/sonar-scanner-cli
-        run: sonar-scanner:cli \
+        run: sonar-scanner \
              -Dsonar.sources=. \ 
              -Dsonar.java.binaries=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/target \ 
              -Dsonar.projectBaseDir=C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \ 
