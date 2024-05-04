@@ -17,19 +17,33 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       
-      - name: SonarQube Scan
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Install SonarScanner
+        run: |
+              wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+              unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+              export PATH="/opt/hostedtoolcache/Java_Adopt_jdk/11.0.23-9/x64/bin/sonar-scanner-5.0.1.3006-linux/bin:$PATH"
+
+      - name: Debug
+        run: |
+          echo $PATH
+          ls -l sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner
 
       - name: sonarsource/sonar-scanner-cli
         run: |
+<<<<<<< HEAD
           sonar-scanner \
              -Dsonar.sources=. \ 
              -Dsonar.java.binaries=./back/target \ 
              -Dsonar.projectBaseDir=. \ 
              -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} \ 
              -Dsonar.token=${{secrets.SONAR_TOKEN}}
+=======
+          docker run --rm \
+          -e SONAR_HOST_URL=http://172.17.0.2:9000 \
+          -v "C:/Users/33612/Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/sonar-project.properties:/usr/src" \
+          sonarsource/sonar-scanner-cli
+
+>>>>>>> 3bdef1aa01f12ba8a2cfe09d0999fa99dea857b8
 
       - name: Build with Maven
         run: mvn -B clean package
