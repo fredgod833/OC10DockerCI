@@ -75,8 +75,8 @@ jobs:
         run: mvn clean verify -Dmaven.test.skip=false
 
       - name: SonarQube Scan on SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=citizensyd_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
 
