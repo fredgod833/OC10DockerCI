@@ -1,73 +1,15 @@
-name: Full CI Workflow
+name: Full Stack CI
 
 on:
   push:
     branches:
-      - '*'
+      - main
   pull_request:
     branches:
-      - '*'
+      - main
 
 jobs:
-  backend_ci:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-      - name: Build with Maven
-        working-directory: ./back
-        run: mvn clean install
-      - name: Run tests and generate Jacoco report
-        working-directory: ./back
-        run: mvn test jacoco:report
-      - name: List test report files
-        working-directory: ./back
-        run: ls -R target/site/jacoco/
-      - name: Check Jacoco report contents
-        working-directory: ./back
-        run: cat target/site/jacoco/jacoco.xml
-      - name: JaCoCo Code Coverage Report
-        uses: PavanMudigonda/jacoco-reporter@v5.0
-        with:
-          coverage_results_path: back/target/site/jacoco/jacoco.xml
-          coverage_report_name: Back Spring Boot Tests
-          coverage_report_title: JaCoCo
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          skip_check_run: false
-          minimum_coverage: 80
-          fail_below_threshold: false
-          publish_only_summary: false
-      - name: Add Coverage Job Summary
-        run: echo "${{ steps.jacoco_reporter.outputs.coverageSummary }}" >> $GITHUB_STEP_SUMMARY
-
-  frontend_ci:
-    needs: backend_ci
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.x'
-      - name: install dependencies
-        working-directory: ./front
-        run: npm ci
-      - name: Run tests
-        working-directory: ./front
-        run: npm run test
-      - name: Test Reporting
-        uses: phoenix-actions/test-reporting@v14
-        with:
-          name: Font Angular Tests
-          path: 'front/test-results/*.xml'
-          reporter: 'java-junit'
-
-  fullstack_build_scan:
-    needs: frontend_ci
+  backend-build-and-scan:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -76,46 +18,57 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'zulu'
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
       - name: Build with Maven
         run: mvn clean verify -Dmaven.test.skip=false
+
       - name: SonarQube Scan on SonarCloud
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=citizensyd_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
 
-  frontend_build_and_scan:
-    needs: fullstack_build_scan
+  frontend-build-and-scan:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./front
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-
+
       - name: Install Dependencies
         run: npm ci
+
       - name: Build
         run: npm run build
       - name: Run tests
         run: npm test
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
