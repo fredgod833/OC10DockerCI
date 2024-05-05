@@ -17,11 +17,12 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       
-        #Sonarqube integration 
-      - uses: actions/checkout@v4
+      - name: Sonarqube integration
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - uses: sonarsource/sonarqube-scan-action@master
+      - name: Sonnarqube scanner
+        uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: sqp_916835f77b0ae1c9be93ce99c3842418094b5941
           SONAR_HOST_URL: http://localhost:9000
