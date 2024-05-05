@@ -24,11 +24,17 @@ jobs:
           fetch-depth: 0
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.projectKey=Marvin-Silva_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_7ccf94bb-560c-404b-87fd-079b910d31a6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
-
+          
       - name: Build with Maven
         run: mvn -B clean package
         working-directory: ${{ github.workspace }}/back
