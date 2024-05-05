@@ -17,23 +17,14 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       
-      - name: Install SonarScanner
-        run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-          unzip sonar-scanner-cli-5.0.1.3006-linux.zip
-          export PATH="/opt/hostedtoolcache/Java_Adopt_jdk/11.0.23-9/x64/bin/sonar-scanner-5.0.1.3006-linux/bin:$PATH"
-
-      - name: Debug
-        run: |
-          echo $PATH
-          ls -l sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner
-
-      - name: sonarsource/sonar-scanner-cli
-        run: |
-          docker run --rm \
-          -e SONAR_HOST_URL=http://localhost:9000 \
-          -v "${{ github.workspace }}/sonar-config:/usr/src" \
-          sonarsource/sonar-scanner-cli
+        #Sonarqube integration 
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
 
       - name: Build with Maven
