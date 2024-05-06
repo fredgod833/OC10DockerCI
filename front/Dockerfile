@@ -1,14 +1,20 @@
-FROM node:latest as build
+FROM node:14.18-alpine as build
 
-WORKDIR /usr/local/app
-COPY ./ /usr/local/app/
-
-RUN yarn
-RUN npm run build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build --prod
  
-FROM nginx:latest as production
+FROM nginx:alpine as production
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/local/app/dist/bobapp /usr/share/nginx/html
+COPY --from=build /app/dist/bobapp /usr/share/nginx/html
 
-EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
+
+

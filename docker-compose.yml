@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+    backend:
+        image: bobapp-back
+        container_name: bobapp-back
+        build:
+            context: ./back
+        ports:
+            - "8080:8080"
+        networks:
+          - bobapp-network
+    frontend:
+        image: bobapp-front 
+        container_name: bobapp-front 
+        build:
+            context: ./front
+        ports:
+            - "4200:80"
+        networks:
+          - bobapp-network
+        depends_on:
+            - backend   
+networks:
+  bobapp-network:
+    driver: bridge 

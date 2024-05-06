@@ -29,6 +29,7 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         { type: 'html' },
+        { type: 'json', subdir: '.', file: 'test-coverage.json' }, // JSON format
         { type: 'text-summary' }
       ]
     },

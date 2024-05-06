@@ -1,0 +1,35 @@
+name: Continuous Integration with Angular
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout bobapp source code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.18.0'
+          cache: 'npm'
+          cache-dependency-path: front/package-lock.json
+
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: crud-angular
+      - name: Run tests and get coverage
+        run: npm run test:ci
+        working-directory: crud-angular
+      - name: Build
+        run: npm run build
+        working-directory: crud-angular
