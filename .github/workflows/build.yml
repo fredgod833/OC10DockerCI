@@ -15,9 +15,9 @@ jobs:
       - name: Clear Sonar Cache
         run: rm -rf /opt/sonar-scanner/.sonar/cache
         
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: Run SonarQube Scanner
         run: |
           docker run --rm \
