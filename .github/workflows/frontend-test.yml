@@ -26,6 +26,14 @@ jobs:
       - name: List TypeScript Coverage Report
         run: ls -l coverage/
         working-directory: ./front
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./front/coverage/lcov.info
+          flags: frontend
+          name: codecov-frontend-report
+
       - name: Test Reporting
         uses: phoenix-actions/test-reporting@v14
         if: always()
