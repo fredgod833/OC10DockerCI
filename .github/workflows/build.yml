@@ -26,7 +26,7 @@ jobs:
           docker run --rm \
           -e SONAR_HOST_URL="http://localhost:9000" \
           -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=Marvin-Silva_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD_7ccf94bb-560c-404b-87fd-079b910d31a6 -Dsonar.java.binaries=back/target" \
-          -e SONAR_TOKEN="sqp_9e4b4b37a31ad3b7793e93537e8e7d26b5cf2cc3" \
+          -e SONAR_TOKEN=${{secrets.SONAR_TOKEN}} \
           --network=host \
           -v "${{ github.workspace }}:/usr/src" \
           sonarsource/sonar-scanner-cli
