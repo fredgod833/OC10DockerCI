@@ -18,6 +18,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Install SonarQube scanner
+        run: docker pull sonarsource/sonar-scanner-cli
+
       - name: Run SonarQube Scanner
         run: |
           docker run --rm \
