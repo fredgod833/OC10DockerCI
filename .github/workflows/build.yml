@@ -19,4 +19,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_SCANNER_OPTS: "-Dsonar.java.binaries=back/target" 
+          SONAR_SCANNER_OPTS: "-Dsonar.projectKey=ci-cd-integration -Dsonar.java.binaries=back/target" 
