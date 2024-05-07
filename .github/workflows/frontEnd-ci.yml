@@ -55,6 +55,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectBaseDir=./front
+            -Dsonar.sources=./front/src
+            -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts
 
 
   publish_docker_hub:
@@ -75,13 +80,13 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build and push Docker image for backend
+      - name: Build and push Docker image for frontend
         uses: docker/build-push-action@v2
         with:
           context: ./back
           file: ./back/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/backend-image:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/frontend-image:latest
 
 
 
