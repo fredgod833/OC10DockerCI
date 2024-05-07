@@ -54,10 +54,6 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         with:
           projectBaseDir: front
-          args: >
-            -Dsonar.organization=paulmarniquet
-            -Dsonar.projectKey=bobapp_frontend
-            -Dsonar.sources=src/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
