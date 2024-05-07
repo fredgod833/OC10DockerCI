@@ -43,6 +43,12 @@ jobs:
         with:
           node-version: '20.12.2'
 
+      - name: Clean npm and Install dependencies
+        run: |
+          cd ${{ github.workspace }}/front
+          npm cache clean --force
+          npm install
+
       - name: Run tests and generate coverage
         run: |
           npm test --prefix ${{ github.workspace }}/front -- --browsers=ChromeHeadless --code-coverage --watch=false
