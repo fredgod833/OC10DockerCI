@@ -56,6 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
+          projectBaseDir: front
           args: >
             -Dsonar.projectBaseDir=./front
             -Dsonar.sources=./front/src
