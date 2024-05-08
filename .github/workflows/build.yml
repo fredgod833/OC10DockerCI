@@ -69,11 +69,15 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_SCANNER_OPTS: "-Dsonar.java.binaries=."
       
-      - name: Access directory and change permissions
-        run: |
-          cd Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork
-          chmod +x /home/runner/work/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork/*
-                
+      - name: Change directory to .scannerwork
+        run: cd "Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork"
+        
+      - name: Give execute permission to files in .scannerwork
+        run: chmod +x /home/runner/work/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork/*
+        
+      - name: List files in .scannerwork
+        run: ls -l /home/runner/work/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork
+  
       # Push project to dockerhub
       - name: Checkout
         uses: actions/checkout@v4
