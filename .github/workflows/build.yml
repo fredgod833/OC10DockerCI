@@ -70,7 +70,10 @@ jobs:
           SONAR_SCANNER_OPTS: "-Dsonar.java.binaries=."
       
       - name: Verify file permissions
-        run: cd /Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork ls -l lsof
+        run: | 
+          cd Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork 
+          ls -l 
+          lsof
                 
       # Push project to dockerhub
       - name: Checkout
