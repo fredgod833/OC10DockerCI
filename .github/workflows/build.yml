@@ -69,6 +69,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_SCANNER_OPTS: "-Dsonar.java.binaries=."
       
+      - name: Verify file permissions
+        run: ls -l lsof
+                
       # Push project to dockerhub
       - name: Checkout
         uses: actions/checkout@v4
