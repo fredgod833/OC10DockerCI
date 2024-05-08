@@ -70,7 +70,7 @@ jobs:
           SONAR_SCANNER_OPTS: "-Dsonar.java.binaries=."
       
       - name: Access directory
-        run: cd Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork 
+        run: cd "Documents/OpenClassrooms/Projet 10/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/.scannerwork" 
       
       - name: Verify file permissions
         run: ls -l 
