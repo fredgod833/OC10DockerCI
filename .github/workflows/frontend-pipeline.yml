@@ -24,8 +24,7 @@ jobs:
         - name: Setup Node.js
           uses: actions/setup-node@v4
           with:
-            node-version: '14'
-            cache: 'npm'
+            node-version: 14
 
         - name: Install dependencies
           run: |
@@ -34,7 +33,6 @@ jobs:
 
         - name: Build with npm
           run: |
-            cd front
             npm run build
 
     unit-test:
@@ -48,8 +46,7 @@ jobs:
         - name: Setup Node.js
           uses: actions/setup-node@v4
           with:
-            node-version: '14'
-            cache: 'npm'
+            node-version: 14
 
         - name: Install dependencies
           run: |
@@ -58,5 +55,4 @@ jobs:
 
         - name: Run unit tests
           run: |
-            cd front
             npm run test
