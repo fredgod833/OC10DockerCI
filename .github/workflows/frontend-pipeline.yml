@@ -33,6 +33,7 @@ jobs:
 
         - name: Build with npm
           run: |
+            cd front
             npm run build
 
     unit-test:
@@ -55,4 +56,5 @@ jobs:
 
         - name: Run unit tests
           run: |
+            cd front
             npm run test
