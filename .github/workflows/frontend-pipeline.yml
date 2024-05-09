@@ -1,0 +1,62 @@
+name: BoB Frontend Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - front/**
+      - .github/workflows/frontend-pipeline.yml
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    build:
+
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout repo --> downloading the code resource
+          uses: actions/checkout@v4
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '14'
+            cache: 'npm'
+
+        - name: Install dependencies
+          run: |
+            cd front
+            npm install
+
+        - name: Build with npm
+          run: |
+            cd front
+            npm run build
+
+    unit-test:
+
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout repo --> downloading the code resource
+          uses: actions/checkout@v4
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '14'
+            cache: 'npm'
+
+        - name: Install dependencies
+          run: |
+            cd front
+            npm ci
+
+        - name: Run unit tests
+          run: |
+            cd front
+            npm run test
