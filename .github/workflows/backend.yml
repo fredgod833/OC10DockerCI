@@ -50,16 +50,4 @@ jobs:
           path: |
             ${{ github.workspace }}/**/build/reports/jacoco/test/html/*
             ${{ github.workspace }}/**/target/site/jacoco/*
-      - name: Add Code Coverage to PR
-        id: jacoco-report
-        uses: madrapps/jacoco-report@1.6.1
-        with:
-              paths: |
-                ${{ github.workspace }}/**/build/reports/jacoco/test/jacocoTestReport.xml
-                ${{ github.workspace }}/**/target/site/jacoco/jacoco.xml
-              token: ${{ secrets.GITHUB_TOKEN }}
-              title: Code Coverage
-              min-coverage-overall: ${{ inputs.overall-coverage-value }}
-              min-coverage-changed-files: ${{ inputs.changed-files-coverage-value }}
-              pass-emoji: ':green_circle:'
-              fail-emoji: ':red_circle:'
+  
