@@ -34,15 +34,6 @@ jobs:
         run: |
           echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
           echo "branches = ${{ steps.jacoco.outputs.branches }}"
-
-      - name: Test Report
-        uses: phoenix-actions/test-reporting@v15
-        id: Jacoco-test-coverage-report            
-        if: success() || failure()    
-        with:
-            name: JEST Tests            
-            path: back/target/site/jacoco/jacoco.xml
-            reporter: jest-junit  
     
       - name: Generate JaCoCo badge
         id: jacoco-badge
@@ -59,4 +50,12 @@ jobs:
           path: |
             ${{ github.workspace }}/**/build/reports/jacoco/test/html/*
             ${{ github.workspace }}/**/target/site/jacoco/*
+            
+      - name: Publish Front Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+            files: |
+                ${{ github.workspace }}/**/target/site/jacoco/jacoco.xml
+
   
