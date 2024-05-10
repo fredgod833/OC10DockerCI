@@ -36,7 +36,7 @@ jobs:
           echo "branches = ${{ steps.jacoco.outputs.branches }}"
     
       - name: Generate JaCoCo badge
-        id: jacoco
+        id: jacoco-badge
         uses: cicirello/jacoco-badge-generator@v2
         with:
             badges-directory: badges
@@ -50,8 +50,8 @@ jobs:
           path: |
             ${{ github.workspace }}/**/build/reports/jacoco/test/html/*
             ${{ github.workspace }}/**/target/site/jacoco/*
-            
       - name: Add Code Coverage to PR
+        id: jacoco-report
         uses: madrapps/jacoco-report@1.6.1
         with:
               paths: |
