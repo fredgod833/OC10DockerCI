@@ -39,9 +39,8 @@ jobs:
         id: jacoco-badge
         uses: cicirello/jacoco-badge-generator@v2
         with:
-            badges-directory: badges
             generate-branches-badge: true
-            generate-summary: true
+            jacoco-csv-file: back/target/site/jacoco/jacoco.csv
 
       - name: Upload JaCoCo Report
         uses: actions/upload-artifact@v4
@@ -51,7 +50,7 @@ jobs:
             ${{ github.workspace }}/**/build/reports/jacoco/test/html/*
             ${{ github.workspace }}/**/target/site/jacoco/*
 
-      - name: Publish Front Test Results
+      - name: Publish back Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
