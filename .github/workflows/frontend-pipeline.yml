@@ -53,8 +53,9 @@ jobs:
           run: |
             cd front
             npm ci
-
+# npm run test -- --no-watch
         - name: Run unit tests
           run: |
             cd front
-            npm run test -- --no-watch
+            npm run coverage
+            
