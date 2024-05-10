@@ -13,7 +13,7 @@ jobs:
             - name: SonarCloud Scan
               uses: SonarSource/sonarcloud-github-action@master
               with:
-                projectBaseDir: ./front   
+                projectBaseDir: front/   
                 args: >
                     -Dsonar.projectKey=bobapp     
               env:
@@ -45,10 +45,11 @@ jobs:
                           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
                           restore-keys: ${{ runner.os }}-m2
                       - name: Build and analyze
+                         
                         env:
                           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
                           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
                           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-                        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapp-back
+                        run: mvn -B verify --file back/pom.xml org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=bobapp-back
        
 
