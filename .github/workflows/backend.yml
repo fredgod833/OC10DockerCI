@@ -34,6 +34,15 @@ jobs:
         run: |
           echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
           echo "branches = ${{ steps.jacoco.outputs.branches }}"
+
+      - name: Test Report
+        uses: phoenix-actions/test-reporting@v15
+        id: Jacoco-test-coverage-report            
+        if: success() || failure()    
+        with:
+            name: JEST Tests            
+            path: back/target/site/jacoco/jacoco.xml
+            reporter: jest-junit  
     
       - name: Generate JaCoCo badge
         id: jacoco-badge
