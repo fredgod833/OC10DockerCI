@@ -45,4 +45,4 @@ jobs:
         if: always()
         with:
               files: |
-                front/coverage/bobapp/test-coverage.json 
+                front/test_results/test-results.xml

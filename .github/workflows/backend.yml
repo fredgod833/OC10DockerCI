@@ -50,12 +50,14 @@ jobs:
           path: |
             ${{ github.workspace }}/**/build/reports/jacoco/test/html/*
             ${{ github.workspace }}/**/target/site/jacoco/*
-            
+
       - name: Publish Front Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
             files: |
-                ${{ github.workspace }}/**/target/site/jacoco/jacoco.xml
+                ${{ github.workspace }}/**/target/surefire-reports/TEST-com.openclassrooms.bobapp.BobappApplicationTests.xml
+                ${{ github.workspace }}/**/target/surefire-reports/TEST-com.openclassrooms.bobapp.controller.JokeControllerTest.xml
+                
 
   
