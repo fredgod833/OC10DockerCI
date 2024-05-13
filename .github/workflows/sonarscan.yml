@@ -18,6 +18,7 @@ jobs:
                 projectBaseDir: front
                 args: >
                     -Dsonar.projectKey=bobapp
+                    -Dsonar.typescript.lcov.reportPaths=coverage/bobapp/lcov.info
 
             env:
               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
