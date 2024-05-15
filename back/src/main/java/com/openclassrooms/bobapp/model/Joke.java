@@ -1,8 +1,8 @@
 package com.openclassrooms.bobapp.model;
 
 public class Joke {
-    public String joke;
-    public String response;
+    private  String joke;
+    private String response;
 
     public Joke() {
     }
