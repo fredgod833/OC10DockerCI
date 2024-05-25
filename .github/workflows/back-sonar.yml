@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build:
+  sonar-back:
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
@@ -44,3 +44,21 @@ jobs:
         run: |
           cd Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+
+  sonar-front:
+    sonar_quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: ./front
+          args: >
+            -Dsonar.organization=shiffff
+            -Dsonar.projectKey=Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
