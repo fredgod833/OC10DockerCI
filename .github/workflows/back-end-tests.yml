@@ -1,4 +1,4 @@
-name: Backend Tests
+name: SonarQube Analysis
 
 on:
   push:
@@ -9,9 +9,8 @@ on:
       - main
 
 jobs:
-  test_backend:
+  sonarqube-analysis:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -22,13 +21,9 @@ jobs:
           java-version: "11"
           distribution: "adopt"
 
-      - name: Build and Test with Maven
+      - name: SonarQube Scan
         run: |
-          cd back  
-          mvn clean test
-
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results-back
-          path: ${{ github.workspace }}/back/target/site/jacoco
+          mvn verify sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=your_project_key -Dsonar.host.url=$SONAR_HOST_URL
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
