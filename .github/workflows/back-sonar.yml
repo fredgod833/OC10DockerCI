@@ -53,6 +53,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
+          projectBaseDir: ./front
           fetch-depth: 0
 
       - name: SonarCloud Scan
