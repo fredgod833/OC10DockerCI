@@ -16,19 +16,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up JDK 11
+      - name: Set up JDK 11 and Maven
         uses: actions/setup-java@v2
         with:
           java-version: "11"
 
-      - name: Install Maven
-        run: sudo apt-get install maven
-
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Launch Backend
-        run: mvn spring-boot:run
-
-      - name: Run Backend Tests
-        run: mvn clean install
+      - name: Build and Test with Maven
+        run: mvn clean test
