@@ -1,5 +1,4 @@
 name: SonarCloud
-
 on:
   push:
     branches:
@@ -8,15 +7,15 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build_back:
-    name: Build and analyze backend
+  build:
+    name: Build and analyze
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          path: Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+          path: Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD # Spécifiez le chemin vers votre répertoire
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -38,33 +37,10 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back/**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Build and analyze backend
+      - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
-
-  sonar_front:
-    name: SonarCloud Frontend Analysis
-    on:
-      push:
-        branches:
-          - main
-      pull_request:
-        types: [opened, synchronize, reopened]
-    jobs:
-      sonarcloud:
-        name: SonarCloud
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout Repository
-            uses: actions/checkout@v3
-            with:
-              fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
-          - name: SonarCloud Scan
-            uses: SonarSource/sonarcloud-github-action@master
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
