@@ -61,4 +61,3 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_PROJECT_KEY: Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
           SONAR_ORGANIZATION: shiffff
-          SONAR_SOURCES: "."
