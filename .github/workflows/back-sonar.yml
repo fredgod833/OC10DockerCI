@@ -26,7 +26,7 @@ jobs:
           SONAR_USER_HOME: ${{ github.workspace }}/.sonar
           GIT_DEPTH: 0
         run: mvn verify sonar:sonar
-      allow_failure: true
+        allow_failure: true
       only:
         - merge_requests
         - main
@@ -45,7 +45,7 @@ jobs:
           CI_MERGE_REQUEST_IID: ${{ github.event.number }}
         run: |
           curl -u "${SONAR_TOKEN}:" "${SONAR_HOST_URL}/api/issues/gitlab_sast_export?projectKey=p10&branch=${CI_COMMIT_BRANCH}&pullRequest=${CI_MERGE_REQUEST_IID}" -o gl-sast-sonar-report.json
-      allow_failure: true
+        allow_failure: true
       only:
         - merge_requests
         - main
