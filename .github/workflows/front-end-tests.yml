@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test:
+  test_frontend:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,4 +28,11 @@ jobs:
           npm install
 
       - name: Run Angular Tests with Code Coverage
-        run: cd ${{ github.workspace }}/front && npm run test:prod
+        run: |
+          cd ${{ github.workspace }}/front
+          npm run test:prod
+        - name: Upload Test Results
+          uses: actions/upload-artifact@v2
+          with:
+            name: test-results
+            path: ${{ github.workspace }}/front/coverage/bobapp  
