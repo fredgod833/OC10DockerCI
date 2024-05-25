@@ -23,4 +23,6 @@ jobs:
           distribution: "adopt"
 
       - name: Build and Test with Maven
-        run: mvn clean test
+        run: |
+          cd back  
+          mvn clean test
