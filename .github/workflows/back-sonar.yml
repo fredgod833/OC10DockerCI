@@ -41,5 +41,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          cd Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back # Accéder au répertoire du projet
+          cd back 
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
