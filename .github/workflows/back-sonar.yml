@@ -46,7 +46,6 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
 
   sonar-front:
-    sonar_quality:
     runs-on: ubuntu-latest
 
     steps:
