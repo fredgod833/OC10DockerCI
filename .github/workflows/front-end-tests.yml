@@ -16,13 +16,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "14"
 
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Frontend Tests
+      - name: Run Angular Tests with Code Coverage
         run: ng test --code-coverage
