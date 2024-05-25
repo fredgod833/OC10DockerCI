@@ -1,5 +1,13 @@
 name: Back sonar
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 stages:
   - sonarqube-check
   - sonarqube-vulnerability-report
