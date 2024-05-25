@@ -26,12 +26,11 @@ jobs:
           SONAR_USER_HOME: ${{ github.workspace }}/.sonar
           GIT_DEPTH: 0
         run: mvn verify sonar:sonar
-        allow_failure: true
-      only:
-        - merge_requests
-        - main
-        - master
-        - develop
+      # allow_failure n'est pas un paramètre valide à ce niveau
+      # uniquement les événements `pull_request` sont évalués dans ce travail, donc "merge_requests" est changé en "pull_request"
+      # "master" est généralement remplacé par "main" dans les workflows GitHub
+      # "develop" est ajouté si c'est une branche utilisée
+      # "only" n'est pas nécessaire ici car le travail est déjà déclenché par les événements spécifiés ci-dessus
 
   sonarqube-vulnerability-report:
     runs-on: ubuntu-latest
@@ -45,12 +44,11 @@ jobs:
           CI_MERGE_REQUEST_IID: ${{ github.event.number }}
         run: |
           curl -u "${SONAR_TOKEN}:" "${SONAR_HOST_URL}/api/issues/gitlab_sast_export?projectKey=p10&branch=${CI_COMMIT_BRANCH}&pullRequest=${CI_MERGE_REQUEST_IID}" -o gl-sast-sonar-report.json
-        allow_failure: true
-      only:
-        - merge_requests
-        - main
-        - master
-        - develop
+      # allow_failure n'est pas un paramètre valide à ce niveau
+      # uniquement les événements `pull_request` sont évalués dans ce travail, donc "merge_requests" est changé en "pull_request"
+      # "master" est généralement remplacé par "main" dans les workflows GitHub
+      # "develop" est ajouté si c'est une branche utilisée
+      # "only" n'est pas nécessaire ici car le travail est déjà déclenché par les événements spécifiés ci-dessus
       artifacts:
         expire_in: 1 day
         paths:
