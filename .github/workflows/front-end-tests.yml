@@ -28,4 +28,4 @@ jobs:
           npm install
 
       - name: Run Angular Tests with Code Coverage
-        run: cd ${{ github.workspace }}/front && ng test --code-coverage
+        run: cd ${{ github.workspace }}/front && npm run test:prod
