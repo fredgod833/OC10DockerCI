@@ -19,13 +19,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "v20.x"
+          node-version: "20.x"
 
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-
-      - name: Install Dependencies
-        run: npm install
+      - name: Install Angular CLI and Dependencies
+        run: |
+          npm install -g @angular/cli
+          cd ${{ github.workspace }}/front
+          npm install
 
       - name: Run Angular Tests with Code Coverage
-        run: ng test --code-coverage
+        run: cd ${{ github.workspace }}/front && ng test --code-coverage
