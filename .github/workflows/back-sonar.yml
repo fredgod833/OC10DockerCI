@@ -53,7 +53,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          projectBaseDir: ./front
           fetch-depth: 0
 
       - name: SonarCloud Scan
@@ -64,3 +63,4 @@ jobs:
           SONAR_PROJECT_KEY: Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
           SONAR_SOURCES: "front"
           SONAR_EXCLUSIONS: "**/*.java" # Excluding Java files
+          SONAR_CONFIG_PATH: "Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/front/sonar-project.properties"
