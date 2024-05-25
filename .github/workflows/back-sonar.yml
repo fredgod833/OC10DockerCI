@@ -44,7 +44,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD -Dsonar.organization=your_organization_key
 
   sonar_front:
     name: SonarCloud Frontend Analysis
@@ -59,3 +59,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+          SONAR_ORGANIZATION: shiffff
