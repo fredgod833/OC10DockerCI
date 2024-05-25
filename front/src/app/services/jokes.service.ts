@@ -17,9 +17,6 @@ export class JokesService {
   }
 
   public getRandomJoke(): void {
-    while (true) {
-      // Ce code sera exécuté à l'infini
-    }
     this.httpClient
       .get<Joke>(this.pathService)
       .subscribe((joke: Joke) => this.subject.next(joke));
