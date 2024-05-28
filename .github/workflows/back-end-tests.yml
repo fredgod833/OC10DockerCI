@@ -33,7 +33,7 @@ jobs:
           name: test-results-back
           path: ${{ github.workspace }}/back/target/site/jacoco
 
-   sonar-back:
+  sonar-back:
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
