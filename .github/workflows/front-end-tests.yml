@@ -47,7 +47,7 @@ jobs:
           projectBaseDir: ./front
           args: >
             -Dsonar.organization=shiffff
-            -Dsonar.projectKey=shiffff_bobapp-front
+            -Dsonar.projectKey=shiffff_bobapp_front
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
