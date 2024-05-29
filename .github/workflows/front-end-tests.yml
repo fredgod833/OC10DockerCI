@@ -44,6 +44,7 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
+          fetch-depth: 0
           projectBaseDir: ./front
           args: >
             -Dsonar.organization=shiffff
