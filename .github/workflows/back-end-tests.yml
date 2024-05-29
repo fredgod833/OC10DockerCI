@@ -89,4 +89,5 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: back_end_p10:$(date +%s)
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/back_end_p10:${{ github.sha }}
