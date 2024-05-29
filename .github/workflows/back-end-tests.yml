@@ -89,4 +89,4 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/back_end_p10:${{ github.sha }}
+          tags: back_end_p10:test
