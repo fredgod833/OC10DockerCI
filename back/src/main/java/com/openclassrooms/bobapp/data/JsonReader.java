@@ -16,7 +16,6 @@ import com.openclassrooms.bobapp.model.Joke;
 public class JsonReader {
     private final ObjectMapper mapper = new ObjectMapper();
     private JsonNode jsonFile;
-    private String test;
 
     private JsonReader() {
         try {
