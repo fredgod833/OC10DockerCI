@@ -35,7 +35,7 @@ jobs:
 
   sonar_back:
     needs: [test_back]
-    name: Build_and_analyze
+    name: sonar_back
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
