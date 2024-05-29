@@ -26,4 +26,4 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: back_end_p10:test
+          tags: shiffff/bobapp:${{ github.sha }}
