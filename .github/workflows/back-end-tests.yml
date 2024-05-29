@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test_backend:
+  test_back:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,6 +34,7 @@ jobs:
           path: ${{ github.workspace }}/back/target/site/jacoco
 
   sonar-back:
+    needs: [test_back]
     name: Build_and_analyze
     runs-on: ubuntu-latest
     steps:
@@ -71,7 +72,7 @@ jobs:
           cd Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/back
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Shiffff_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
   dockerCreate:
-    needs: [test_backend, sonar-back]
+    needs: [test_back, sonar-back]
     runs-on: ubuntu-latest
 
     steps:
@@ -88,4 +89,4 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: shifff/bobapp:${{ github.sha }}
+          tags: shifff/bobapp_back:${{ github.sha }}
