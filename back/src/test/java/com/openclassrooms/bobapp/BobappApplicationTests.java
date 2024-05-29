@@ -9,5 +9,8 @@ class BobappApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	@Test
+	void contextLoads() {
+	}
 
 }
