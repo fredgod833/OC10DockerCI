@@ -26,4 +26,4 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: shiffff/bobapp:${{ github.sha }}
+          tags: shifff/bobapp:${{ github.sha }}
